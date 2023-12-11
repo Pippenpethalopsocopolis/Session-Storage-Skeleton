@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Form</title>
+  </head>
+  <body>
+    <h1>Login Form</h1>
+    <form>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username"><br><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password"><br><br>
+      <button type="button" onclick="login()">Login</button>
+    </form>
+    <script>
+      // Check if the user is already logged in
+      if (sessionStorage.getItem('loggedIn') !== 'true') {
+        
+      }
+      else {
+        window.location.href = 'welcome.html';
+      }
+
+      // Login function
+      function login() {
+        // Get the username and password from the login form
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+      
+        // Check if the username and password are correct
+        if ((username === 'user1' && password === 'password1') || (username === 'user2' && password === 'password2')) {
+          // Store the login status and username in session storage(you must use a proper database and take the username/password from there we stored it on cache only to simplify the procces)
+          sessionStorage.setItem('loggedIn', 'true');
+          sessionStorage.setItem('username', username);
+        
+          // Redirect to the welcome page
+          window.location.href = 'welcome.html';
+        } else {
+          // Display an error message
+          alert('Incorrect username or password.');
+        }
+      }
+    </script>
+  </body>
+</html>

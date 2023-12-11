@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome</title>
+  </head>
+  <body>
+    <h1>Welcome</h1>
+    <p id="welcome-message"></p>
+    <button type="button" onclick="logout()">Logout</button>
+    <script>
+        // Get the username from session storage
+        const username = sessionStorage.getItem('username');
+
+        // Display the welcome message
+        document.getElementById('welcome-message').textContent = `Hello ${username}!`;
+
+        // Check if the user is logged in
+        if (sessionStorage.getItem('loggedIn') !== 'true') {
+          window.location.href = 'login.html';
+        } else {
+          // Get the username from session storage
+          const username = sessionStorage.getItem('username');
+        
+          // Display the welcome message(you must also take data from database to display their user-strict content. This only here simlify the procces)
+          document.getElementById('welcome-message').textContent = `Hello ${username}!`;
+        }
+
+        // Logout function
+        function logout() {
+          // Remove the login status and username from session storage
+          sessionStorage.removeItem('loggedIn');
+          sessionStorage.removeItem('username');
+        
+          // Redirect to the login page
+          window.location.href = 'login.html';
+        }
+
+    </script>
+  </body>
+</html>
